@@ -6,8 +6,18 @@ var io = require("socket.io")(http)
 
 //Abrindo evento de conexão
 io.on("connection",(socket) => {
-    console.log(socket)
-    console.log(socket.id)
+   
+    socket.on("boasvindas", (data) => {
+        console.log("Executando evento de boas vindas")
+        console.log(data)
+    })
+
+    socket.on("palavra", (data) => {
+        console.log(data)
+        socket.emit("resultado", data + " - Luiz dev" )
+    })
+
+    
 })
 
 
